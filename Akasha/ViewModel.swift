@@ -36,7 +36,9 @@ class QuoteViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.quote = text
                 }
-                NotificationManager.instance.deliverNotifications(body: text)
+                NotificationManager.instance.ensureSixHourQuoteNotification(
+                    body: text
+                )
             }
         }
     }

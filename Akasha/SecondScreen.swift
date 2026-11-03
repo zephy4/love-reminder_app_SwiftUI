@@ -1,10 +1,3 @@
-//
-//  SecondScreen.swift
-//  Akasha
-//
-//  Created by Ismaeel Shahbaz on 3/9/26.
-//
-
 import SwiftUI
 
 struct SecondScreen: View {
@@ -19,9 +12,13 @@ struct SecondScreen: View {
                     .font(.title2)
                     .fontWeight(.semibold)
 
-                TextField("Type your loving words here…", text: $newQuote, axis: .vertical)
-                    .textFieldStyle(.roundedBorder)
-                    .lineLimit(3, reservesSpace: true)
+                TextField(
+                    "Type your loving words here…",
+                    text: $newQuote,
+                    axis: .vertical
+                )
+                .textFieldStyle(.roundedBorder)
+                .lineLimit(3, reservesSpace: true)
 
                 if vm.isUploading {
                     ProgressView("Saving…")
@@ -34,7 +31,6 @@ struct SecondScreen: View {
                         .foregroundColor(.green)
                         .font(.footnote)
                 }
-
                 Button {
                     didSave = false
                     vm.addQuote(text: newQuote) { error in
@@ -47,11 +43,18 @@ struct SecondScreen: View {
                     Text("Save Quote")
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(newQuote.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? Color.gray.opacity(0.4) : Color.pink)
+                        .background(
+                            newQuote.trimmingCharacters(
+                                in: .whitespacesAndNewlines
+                            ).isEmpty ? Color.gray.opacity(0.4) : Color.pink
+                        )
                         .foregroundColor(.white)
                         .cornerRadius(12)
                 }
-                .disabled(newQuote.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || vm.isUploading)
+                .disabled(
+                    newQuote.trimmingCharacters(in: .whitespacesAndNewlines)
+                        .isEmpty || vm.isUploading
+                )
 
                 Spacer()
             }

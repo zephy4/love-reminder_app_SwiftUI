@@ -1,5 +1,6 @@
 import FirebaseCore
 import SwiftUI
+import UserNotifications
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(
@@ -8,6 +9,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             .LaunchOptionsKey: Any]? = nil
     ) -> Bool {
         FirebaseApp.configure()
+        NotificationManager.instance.configure()
         return true
     }
 }
